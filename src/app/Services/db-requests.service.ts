@@ -1,24 +1,35 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root',
 })
 export class DbRequestsService {
-  constructor() {}
+  apiUrl = 'https://21f6-80-104-215-127.eu.ngrok.io/';
+
+  roomListUrl = `${this.apiUrl}room`;
+  customerListUrl = `${this.apiUrl}customer`;
+  bookingListUrl = `${this.apiUrl}booking`;
+  paymentsListUrl = `${this.apiUrl}payment`;
+  testUrl = `${this.apiUrl}test`;
+
+  constructor(private http: HttpClient) {}
 
   // Rooms
   getRoomsList() {}
-  getRoomById() {}
+  getRoomById(id: number) {
+    return this.http.get(this.roomListUrl);
+  }
 
   // customers
   getCustomerList() {}
-  getCustomerById() {}
+  getCustomerByName() {}
 
   // booking
   getBookingList() {}
   getBookingById() {}
 
   // payments
-  getAllPayments() {}
+  getPaymentsList() {}
   getPaymentsByCustomer() {}
 }
